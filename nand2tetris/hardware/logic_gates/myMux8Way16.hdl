@@ -1,0 +1,150 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/1/Mux8Way16.hdl
+/**
+ * 8-way 16-bit multiplexor:
+ * out = a if sel = 000
+ *       b if sel = 001
+ *       c if sel = 010
+ *       d if sel = 011
+ *       e if sel = 100
+ *       f if sel = 101
+ *       g if sel = 110
+ *       h if sel = 111
+ */
+CHIP myMux8Way16 {
+    IN a[16], b[16], c[16], d[16],
+       e[16], f[16], g[16], h[16],
+       sel[3];
+    OUT out[16];
+
+    PARTS:
+    myMux(a = a[0], b = b[0], sel = sel[0], out = out000);
+    myMux(a = c[0], b = d[0], sel = sel[0], out = out001);
+    myMux(a = e[0], b = f[0], sel = sel[0], out = out002);
+    myMux(a = g[0], b = h[0], sel = sel[0], out = out003);
+    myMux(a = out000, b = out001, sel = sel[1], out = out011);
+    myMux(a = out002, b = out003, sel = sel[1], out = out012);
+    myMux(a = out011, b = out012, sel = sel[2], out = out[0]);
+
+    myMux(a = a[1], b = b[1], sel = sel[0], out = out100);
+    myMux(a = c[1], b = d[1], sel = sel[0], out = out101);
+    myMux(a = e[1], b = f[1], sel = sel[0], out = out102);
+    myMux(a = g[1], b = h[1], sel = sel[0], out = out103);
+    myMux(a = out100, b = out101, sel = sel[1], out = out111);
+    myMux(a = out102, b = out103, sel = sel[1], out = out112);
+    myMux(a = out111, b = out112, sel = sel[2], out = out[1]);
+
+    myMux(a = a[2], b = b[2], sel = sel[0], out = out200);
+    myMux(a = c[2], b = d[2], sel = sel[0], out = out201);
+    myMux(a = e[2], b = f[2], sel = sel[0], out = out202);
+    myMux(a = g[2], b = h[2], sel = sel[0], out = out203);
+    myMux(a = out200, b = out201, sel = sel[1], out = out211);
+    myMux(a = out202, b = out203, sel = sel[1], out = out212);
+    myMux(a = out211, b = out212, sel = sel[2], out = out[2]);
+
+    myMux(a = a[3], b = b[3], sel = sel[0], out = out300);
+    myMux(a = c[3], b = d[3], sel = sel[0], out = out301);
+    myMux(a = e[3], b = f[3], sel = sel[0], out = out302);
+    myMux(a = g[3], b = h[3], sel = sel[0], out = out303);
+    myMux(a = out300, b = out301, sel = sel[1], out = out311);
+    myMux(a = out302, b = out303, sel = sel[1], out = out312);
+    myMux(a = out311, b = out312, sel = sel[2], out = out[3]);
+
+    myMux(a = a[4], b = b[4], sel = sel[0], out = out400);
+    myMux(a = c[4], b = d[4], sel = sel[0], out = out401);
+    myMux(a = e[4], b = f[4], sel = sel[0], out = out402);
+    myMux(a = g[4], b = h[4], sel = sel[0], out = out403);
+    myMux(a = out400, b = out401, sel = sel[1], out = out411);
+    myMux(a = out402, b = out403, sel = sel[1], out = out412);
+    myMux(a = out411, b = out412, sel = sel[2], out = out[4]);
+
+    myMux(a = a[5], b = b[5], sel = sel[0], out = out500);
+    myMux(a = c[5], b = d[5], sel = sel[0], out = out501);
+    myMux(a = e[5], b = f[5], sel = sel[0], out = out502);
+    myMux(a = g[5], b = h[5], sel = sel[0], out = out503);
+    myMux(a = out500, b = out501, sel = sel[1], out = out511);
+    myMux(a = out502, b = out503, sel = sel[1], out = out512);
+    myMux(a = out511, b = out512, sel = sel[2], out = out[5]);
+
+    myMux(a = a[6], b = b[6], sel = sel[0], out = out600);
+    myMux(a = c[6], b = d[6], sel = sel[0], out = out601);
+    myMux(a = e[6], b = f[6], sel = sel[0], out = out602);
+    myMux(a = g[6], b = h[6], sel = sel[0], out = out603);
+    myMux(a = out600, b = out601, sel = sel[1], out = out611);
+    myMux(a = out602, b = out603, sel = sel[1], out = out612);
+    myMux(a = out611, b = out612, sel = sel[2], out = out[6]);
+
+    myMux(a = a[7], b = b[7], sel = sel[0], out = out700);
+    myMux(a = c[7], b = d[7], sel = sel[0], out = out701);
+    myMux(a = e[7], b = f[7], sel = sel[0], out = out702);
+    myMux(a = g[7], b = h[7], sel = sel[0], out = out703);
+    myMux(a = out700, b = out701, sel = sel[1], out = out711);
+    myMux(a = out702, b = out703, sel = sel[1], out = out712);
+    myMux(a = out711, b = out712, sel = sel[2], out = out[7]);
+
+    myMux(a = a[8], b = b[8], sel = sel[0], out = out800);
+    myMux(a = c[8], b = d[8], sel = sel[0], out = out801);
+    myMux(a = e[8], b = f[8], sel = sel[0], out = out802);
+    myMux(a = g[8], b = h[8], sel = sel[0], out = out803);
+    myMux(a = out800, b = out801, sel = sel[1], out = out811);
+    myMux(a = out802, b = out803, sel = sel[1], out = out812);
+    myMux(a = out811, b = out812, sel = sel[2], out = out[8]);
+
+    myMux(a = a[9], b = b[9], sel = sel[0], out = out900);
+    myMux(a = c[9], b = d[9], sel = sel[0], out = out901);
+    myMux(a = e[9], b = f[9], sel = sel[0], out = out902);
+    myMux(a = g[9], b = h[9], sel = sel[0], out = out903);
+    myMux(a = out900, b = out901, sel = sel[1], out = out911);
+    myMux(a = out902, b = out903, sel = sel[1], out = out912);
+    myMux(a = out911, b = out912, sel = sel[2], out = out[9]);
+
+    myMux(a = a[10], b = b[10], sel = sel[0], out = out1000);
+    myMux(a = c[10], b = d[10], sel = sel[0], out = out1001);
+    myMux(a = e[10], b = f[10], sel = sel[0], out = out1002);
+    myMux(a = g[10], b = h[10], sel = sel[0], out = out1003);
+    myMux(a = out1000, b = out1001, sel = sel[1], out = out1011);
+    myMux(a = out1002, b = out1003, sel = sel[1], out = out1012);
+    myMux(a = out1011, b = out1012, sel = sel[2], out = out[10]);
+
+    myMux(a = a[11], b = b[11], sel = sel[0], out = out1100);
+    myMux(a = c[11], b = d[11], sel = sel[0], out = out1101);
+    myMux(a = e[11], b = f[11], sel = sel[0], out = out1102);
+    myMux(a = g[11], b = h[11], sel = sel[0], out = out1103);
+    myMux(a = out1100, b = out1101, sel = sel[1], out = out1111);
+    myMux(a = out1102, b = out1103, sel = sel[1], out = out1112);
+    myMux(a = out1111, b = out1112, sel = sel[2], out = out[11]);
+
+    myMux(a = a[12], b = b[12], sel = sel[0], out = out1200);
+    myMux(a = c[12], b = d[12], sel = sel[0], out = out1201);
+    myMux(a = e[12], b = f[12], sel = sel[0], out = out1202);
+    myMux(a = g[12], b = h[12], sel = sel[0], out = out1203);
+    myMux(a = out1200, b = out1201, sel = sel[1], out = out1211);
+    myMux(a = out1202, b = out1203, sel = sel[1], out = out1212);
+    myMux(a = out1211, b = out1212, sel = sel[2], out = out[12]);
+
+    myMux(a = a[13], b = b[13], sel = sel[0], out = out1300);
+    myMux(a = c[13], b = d[13], sel = sel[0], out = out1301);
+    myMux(a = e[13], b = f[13], sel = sel[0], out = out1302);
+    myMux(a = g[13], b = h[13], sel = sel[0], out = out1303);
+    myMux(a = out1300, b = out1301, sel = sel[1], out = out1311);
+    myMux(a = out1302, b = out1303, sel = sel[1], out = out1312);
+    myMux(a = out1311, b = out1312, sel = sel[2], out = out[13]);
+
+    myMux(a = a[14], b = b[14], sel = sel[0], out = out1400);
+    myMux(a = c[14], b = d[14], sel = sel[0], out = out1401);
+    myMux(a = e[14], b = f[14], sel = sel[0], out = out1402);
+    myMux(a = g[14], b = h[14], sel = sel[0], out = out1403);
+    myMux(a = out1400, b = out1401, sel = sel[1], out = out1411);
+    myMux(a = out1402, b = out1403, sel = sel[1], out = out1412);
+    myMux(a = out1411, b = out1412, sel = sel[2], out = out[14]);
+
+    myMux(a = a[15], b = b[15], sel = sel[0], out = out1500);
+    myMux(a = c[15], b = d[15], sel = sel[0], out = out1501);
+    myMux(a = e[15], b = f[15], sel = sel[0], out = out1502);
+    myMux(a = g[15], b = h[15], sel = sel[0], out = out1503);
+    myMux(a = out1500, b = out1501, sel = sel[1], out = out1511);
+    myMux(a = out1502, b = out1503, sel = sel[1], out = out1512);
+    myMux(a = out1511, b = out1512, sel = sel[2], out = out[15]);
+}
